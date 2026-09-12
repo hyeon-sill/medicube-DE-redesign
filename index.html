@@ -1,0 +1,514 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>medicube PDRN Pink Collagen Exosome Shot Ampulle</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root{
+  --cycle:6.50s;
+  --ink:#1E252E; --mute:#6B7680; --line:#E4E7EA; --hair:#F0F2F4;
+  --pink:#D31076; --rose:#F2C8C5; --snow:#FFFFFF;
+  --sans:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
+  --page:900px;
+  --gut:clamp(20px,5vw,44px);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--snow);color:var(--ink);
+  font-family:var(--sans);font-size:16px;line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+img,video{display:block;width:100%;height:auto}
+.page{max-width:var(--page);margin:0 auto}
+section{position:relative}
+
+/* ── 섹션 3: 영상 + 이미지 ───────────────────── */
+.sec3 video{background:#F6EFEC}
+
+/* ── 섹션 5: 인터랙티브 제형 + 오버레이 ─────── */
+.sec5{
+  position:relative;
+  aspect-ratio:1600/3382;
+  overflow:hidden;              /* 제형이 우측으로 흘러넘치는 것을 잘라냄 (일러 원본과 동일) */
+}
+.sec5 .viewer{
+  position:absolute;
+  left:10.9%; top:7.4%; width:111.4%;
+  aspect-ratio:1/1;
+  cursor:grab; touch-action:pan-y;
+  user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent;
+}
+.sec5 .viewer.grabbing{cursor:grabbing}
+.sec5 .viewer canvas{display:block;width:100%;height:100%}
+.sec5 .viewer:focus-visible{outline:2px solid var(--pink);outline-offset:4px}
+.sec5 .overlay{
+  position:absolute;inset:0;width:100%;height:100%;
+  pointer-events:none;          /* 텍스트 레이어를 통과해 아래 뷰어를 드래그 */
+}
+.drag-hint{
+  position:absolute; left:10.9%; top:3%;
+  display:flex;align-items:center;gap:8px;
+  font-size:12.5px;color:var(--mute);
+  transition:opacity .5s ease; pointer-events:none;
+}
+.drag-hint.gone{opacity:0}
+
+/* ── 아코디언 ───────────────────────────────── */
+.details{padding:clamp(32px,6vw,64px) var(--gut) clamp(48px,8vw,88px)}
+.acc{border-top:1px solid var(--line)}
+.acc:last-of-type{border-bottom:1px solid var(--line)}
+.acc-btn{
+  all:unset;display:flex;align-items:center;justify-content:space-between;gap:20px;
+  width:100%;padding:22px 2px;cursor:pointer;
+  font-family:var(--sans);font-size:clamp(15px,2vw,17px);font-weight:600;color:var(--ink);
+  transition:color .25s ease;
+}
+.acc-btn::-webkit-details-marker{display:none}
+.acc-btn:focus-visible{outline:2px solid var(--pink);outline-offset:4px}
+.sign{position:relative;width:13px;height:13px;flex:none}
+.sign::before,.sign::after{content:"";position:absolute;background:var(--ink);transition:transform .25s ease,background-color .25s ease}
+.sign::before{inset:6px 0 auto 0;height:1.4px}
+.sign::after{inset:0 auto 0 6px;width:1.4px}
+.acc[open] .acc-btn{color:var(--pink)}
+.acc[open] .sign::before,.acc[open] .sign::after{background:var(--pink)}
+.acc[open] .sign::after{transform:scaleY(0)}
+.acc-panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .32s cubic-bezier(.4,0,.2,1)}
+.acc[open] .acc-panel{grid-template-rows:1fr}
+.acc-inner{overflow:hidden}
+.acc-body{padding:2px 0 34px;max-width:62ch}
+.acc-body p{margin:0 0 14px}
+.lede{color:var(--mute);font-size:15px}
+
+/* 사용 순서 */
+.steps{margin:0 0 26px;padding:0;list-style:none;counter-reset:s}
+.steps li{
+  counter-increment:s;display:grid;grid-template-columns:34px 1fr;gap:12px;
+  padding:15px 0;border-bottom:1px solid var(--hair);
+}
+.steps .txt{min-width:0}
+.steps li::before{content:"0" counter(s);color:var(--pink);font-size:13px;font-weight:600;letter-spacing:.02em;line-height:1.75}
+.steps b{display:block;font-weight:600;margin-bottom:2px}
+.steps span{color:var(--mute);font-size:15px}
+
+.notes{margin:0;padding:0;list-style:none}
+.notes li{
+  display:grid;grid-template-columns:auto 1fr;gap:11px;
+  padding:7px 0;font-size:14px;color:var(--mute);
+}
+.notes li::before{content:"";width:4px;height:4px;margin-top:9px;background:var(--rose);border-radius:50%}
+
+/* 라인업 + 캘린더 */
+.lineup{margin:0 0 26px;padding:0;list-style:none;font-size:15px}
+.lineup li{display:grid;grid-template-columns:76px 1fr;gap:12px;padding:6px 0}
+.lineup .txt{min-width:0;color:var(--mute)}
+.lineup b{font-weight:600}
+.lineup span{color:var(--mute)}
+
+.cal{width:100%;border-collapse:collapse;margin:0 0 18px}
+.cal th,.cal td{padding:13px 4px;text-align:center;font-size:14px}
+.cal thead th{font-weight:500;color:var(--mute);border-bottom:1px solid var(--ink)}
+.cal thead th:first-child{text-align:left}
+.cal tbody th{text-align:left;font-weight:600;white-space:nowrap;padding-right:14px;border-bottom:1px solid var(--hair)}
+.cal tbody td{border-bottom:1px solid var(--hair)}
+.dot{
+  display:inline-block;width:13px;height:13px;border-radius:50%;
+  background:var(--rose);vertical-align:middle;
+}
+.dot.s{
+  background:var(--pink);
+  animation:ignite var(--cycle) ease-in-out infinite;
+}
+@keyframes ignite{
+  0%{transform:scale(1);box-shadow:0 0 0 0 rgba(211,16,118,0)}
+  5.4%{transform:scale(1.5);box-shadow:0 0 13px 4px rgba(211,16,118,.45)}
+  13.1%{transform:scale(1.12);box-shadow:0 0 5px 1px rgba(211,16,118,.14)}
+  23.1%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(211,16,118,0)}
+}
+.legend{display:flex;flex-wrap:wrap;gap:18px;margin:0;padding:0;list-style:none;font-size:13.5px;color:var(--mute)}
+.legend li{display:flex;align-items:center;gap:8px}
+
+/* 성분 */
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 22px;padding:0;list-style:none}
+.chips li{border:1px solid var(--line);padding:7px 13px;font-size:13.5px}
+.inci{font-size:12.5px;color:var(--mute);line-height:1.7;word-break:break-word}
+.inci-h{font-size:13px;font-weight:600;color:var(--ink);margin:0 0 6px}
+
+/* FAQ */
+.faq{margin:0}
+.faq dt{font-weight:600;margin:20px 0 5px}
+.faq dt:first-of-type{margin-top:0}
+.faq dd{margin:0;color:var(--mute);font-size:15px}
+
+/* ── 번역 토글 ─────────────────────────────── */
+.trbtn{
+  position:fixed; top:14px; right:14px; z-index:60;
+  all:unset; cursor:pointer;
+  font-family:var(--sans); font-size:12.5px; font-weight:600; letter-spacing:.01em;
+  color:var(--ink); background:rgba(255,255,255,.92);
+  border:1px solid var(--line); border-radius:999px;
+  padding:9px 15px;
+  backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
+  box-shadow:0 2px 10px rgba(30,37,46,.07);
+  transition:color .2s ease,border-color .2s ease;
+}
+.trbtn:hover{border-color:var(--pink)}
+.trbtn:focus-visible{outline:2px solid var(--pink);outline-offset:3px}
+body.tr-on .trbtn{color:var(--pink);border-color:var(--pink)}
+
+.trbar{
+  position:fixed; left:0; right:0; bottom:0; z-index:55;
+  transform:translateY(101%); transition:transform .3s cubic-bezier(.4,0,.2,1);
+  background:rgba(255,255,255,.97);
+  backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
+  border-top:1.5px solid var(--ink);
+  box-shadow:0 -8px 28px rgba(30,37,46,.09);
+}
+body.tr-on .trbar{transform:translateY(0)}
+body.tr-on{padding-bottom:clamp(150px,26vh,260px)}
+
+.trbar-in{
+  max-width:var(--page); margin:0 auto;
+  padding:15px var(--gut) 17px;
+  max-height:34vh; overflow-y:auto;
+  -webkit-overflow-scrolling:touch;
+}
+.trbar-hd{
+  display:flex; align-items:center; gap:9px; margin:0 0 9px;
+}
+.kr-tag{
+  display:inline-block;
+  font-size:10px; font-weight:700; letter-spacing:.09em;
+  color:var(--pink); border:1px solid var(--pink);
+  border-radius:999px; padding:3px 8px; flex:none;
+}
+.trbar-sec{font-size:11.5px; font-weight:600; letter-spacing:.04em; color:#9AA2AA}
+.trbar-body{font-size:14.5px; line-height:1.72; color:var(--ink)}
+.trbar-body p{margin:0 0 8px; max-width:64ch}
+.trbar-body p:last-child{margin-bottom:0}
+.trbar-body b{font-weight:600}
+.trbar-body .q{font-weight:600; margin-top:12px}
+.trbar-body .sub{font-size:12.5px; color:#8A939C}
+.trbar-body .orig{
+  margin-top:13px; padding:11px 13px;
+  background:#FBF4F7; border-left:2px solid var(--pink);
+  font-size:12.5px; line-height:1.65; color:#7A828A;
+}
+.trbar-body .orig em{font-style:normal; font-weight:600; color:var(--pink)}
+
+
+
+@media (prefers-reduced-motion:reduce){
+  *{transition-duration:.001ms !important;animation:none !important}
+}
+</style>
+</head>
+<body>
+
+<button class="trbtn" id="trbtn" aria-pressed="false">번역 보기</button>
+
+<main class="page">
+
+  <section id="s1"><img width="1600" height="4067" src="assets/Gm_01.jpg" alt="medicube PDRN Pink Collagen Exosome Shot Ampulle — Regenerieren. Straffen. Erstrahlen."></section>
+
+  <section id="s2"><img width="1600" height="6140" loading="lazy" src="assets/Gm_02.jpg" alt="Koreanische dermatologische Wissenschaft — Wirkstoffe: 99 % Lachs-PDRN, 15 Mio. Exosomen, 200 Da Pink Collagen"></section>
+
+  <section class="sec3" id="s3">
+    <video src="assets/mv_loop.mp4" width="960" height="1200" autoplay loop muted playsinline preload="metadata"
+           aria-label="Schematische Darstellung der Wirkstoffpartikel"></video>
+    <img width="1600" height="1080" loading="lazy" src="assets/Gm_03.jpg" alt="Messergebnisse: +146 % Kollagensynthese, +16,9 % Hautvolumen, +24 % Hautleuchtkraft">
+  </section>
+
+  <section id="s4"><img width="1600" height="3411" loading="lazy" src="assets/Gm_04.jpg" alt="Faltenzonen nach zwei Wochen: Stirn 6,98 %, Augenpartie 8,15 %, Nasolabialfalte 7,45 %, Mundpartie 8,55 %"></section>
+
+  <section class="sec5" id="s5">
+    <div class="viewer" id="v" tabindex="0" role="img"
+         aria-label="Interaktive Ansicht der Textur. Ziehen zum Bewegen.">
+      <canvas id="c" width="640" height="640"></canvas>
+    </div>
+    <p class="drag-hint" id="hint">
+      <svg width="19" height="11" viewBox="0 0 19 11" fill="none" aria-hidden="true">
+        <path d="M6 1L2 5.5 6 10M13 1l4 4.5-4 4.5" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Ziehen
+    </p>
+    <img class="overlay" width="1600" height="3382" loading="lazy" src="assets/Gm_05.png" alt="Step 01 Sofort aufgenommen. Step 02 Für ein ebenmäßigeres Hautbild.">
+  </section>
+
+  <section class="details" id="s6">
+
+    <details class="acc" name="pdp">
+      <summary class="acc-btn">Anwendung<span class="sign" aria-hidden="true"></span></summary>
+      <div class="acc-panel"><div class="acc-inner"><div class="acc-body">
+        <p class="lede">Abends, als erster Schritt Ihrer Pflegeroutine.</p>
+        <ol class="steps">
+          <li><div class="txt"><b>Auftragen</b><span>Nach der Reinigung auf die trockene Haut. Geben Sie eine kleine Menge auf und verteilen Sie sie unter Aussparung der Augen- und Lippenpartie.</span></div></li>
+          <li><div class="txt"><b>Einklopfen</b><span>Klopfen Sie die Ampulle mit den Fingerkuppen sanft ein, bis sie vollständig eingezogen ist.</span></div></li>
+          <li><div class="txt"><b>Abschließen</b><span>Versiegeln Sie mit Ihrer gewohnten Feuchtigkeitspflege.</span></div></li>
+        </ol>
+        <ul class="notes">
+          <li>Ein leichtes Prickeln kann länger anhalten. Das ist eine normale Reaktion der Wirkstoffe.</li>
+          <li>Augen- und Lippenpartie aussparen.</li>
+          <li>Die Formel enthält Retinol. Verwenden Sie tagsüber zusätzlich einen Sonnenschutz.</li>
+          <li>Bei empfindlicher Haut empfehlen wir vorab einen Patch-Test.</li>
+        </ul>
+      </div></div></div>
+    </details>
+
+    <details class="acc" name="pdp">
+      <summary class="acc-btn">Anwendungsrhythmus<span class="sign" aria-hidden="true"></span></summary>
+      <div class="acc-panel"><div class="acc-inner"><div class="acc-body">
+        <p class="lede">Die Exosome Shot Linie — zwei Konzentrationen, ein Rhythmus.</p>
+        <ul class="lineup">
+          <li><b>2000</b><div class="txt">für die tägliche Anwendung</div></li>
+          <li><b>7500</b><div class="txt">für die intensive Pflege</div></li>
+        </ul>
+        <table class="cal">
+          <thead><tr><th scope="col">Rhythmus</th><th scope="col">Mo</th><th scope="col">Di</th><th scope="col">Mi</th><th scope="col">Do</th><th scope="col">Fr</th><th scope="col">Sa</th><th scope="col">So</th></tr></thead>
+          <tbody>
+<tr><th scope="row">Einsteiger</th><td><span class="dot"></span></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td><span class="dot"></span></td></tr>
+<tr><th scope="row">Fortgeschritten</th><td><span class="dot"></span></td><td><span class="dot"></span></td><td><span class="dot s" style="animation-delay:0.00s"></span></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td><span class="dot s" style="animation-delay:0.80s"></span></td><td><span class="dot"></span></td></tr>
+<tr><th scope="row">Experte</th><td><span class="dot s" style="animation-delay:1.60s"></span></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td><span class="dot s" style="animation-delay:2.40s"></span></td><td><span class="dot"></span></td><td><span class="dot"></span></td><td><span class="dot s" style="animation-delay:3.20s"></span></td></tr>
+          </tbody>
+        </table>
+        <ul class="legend">
+          <li><span class="dot" aria-hidden="true"></span>Exosome Shot 2000</li>
+          <li><span class="dot s" style="animation:none" aria-hidden="true"></span>Exosome Shot 7500</li>
+        </ul>
+      </div></div></div>
+    </details>
+
+    <details class="acc" name="pdp">
+      <summary class="acc-btn">Inhaltsstoffe &amp; Clean<span class="sign" aria-hidden="true"></span></summary>
+      <div class="acc-panel"><div class="acc-inner"><div class="acc-body">
+        <p class="lede">Formuliert ohne</p>
+        <ul class="chips">
+          <li>Parabene</li><li>Sulfate</li><li>Mineralöl</li><li>Künstliche Farbstoffe</li>
+        </ul>
+        <p class="inci-h">Alle Inhaltsstoffe (INCI)</p>
+        <p class="inci">Water (Aqua), Butylene Glycol, Dipropylene Glycol, Glycerin, Niacinamide, Sodium Polyacrylate, 1,2-Hexanediol, Calcium Aluminum Borosilicate, Hydrolyzed Sponge, Caprylyl Glycol, Cetearyl Olivate, Phenyl Trimethicone, Sorbitan Olivate, Glyceryl Acrylate/Acrylic Acid Copolymer, Ethylhexylglycerin, Adenosine, Disodium EDTA, PVM/MA Copolymer, Panthenol, Lactobacillus Extracellular Vesicles, Cyanocobalamin, Sodium DNA, Milk Extracellular Vesicles, Collagen Extract, Macadamia Ternifolia Seed Oil, Caprylic/Capric Triglyceride, Alcohol, Hydrogenated Lecithin, Polysorbate 20, Retinol, Chondrus Crispus Extract, Cholesterol, Sodium Hyaluronate, Brassica Campestris Sterols, Polyglyceryl-10 Laurate, Ceteth-3, Ceteth-5, Tocopheryl Acetate, Hydrolyzed Elastin, Potassium Cetyl Phosphate, Hydroxypropyltrimonium Hyaluronate, Acetyl Tetrapeptide-5, Palmitoyl Pentapeptide-4, Sodium Acetylated Hyaluronate, Hydrolyzed Hyaluronic Acid, Palmitoyl Tripeptide-5, Hyaluronic Acid, Sodium Hyaluronate Crosspolymer, Hydrolyzed Sodium Hyaluronate, Potassium Hyaluronate</p>
+      </div></div></div>
+    </details>
+
+    <details class="acc" name="pdp">
+      <summary class="acc-btn">Häufige Fragen<span class="sign" aria-hidden="true"></span></summary>
+      <div class="acc-panel"><div class="acc-inner"><div class="acc-body">
+        <dl class="faq">
+          <dt>Nach dem Auftragen prickelt die Haut leicht. Ist das normal?</dt>
+          <dd>Die Formel enthält feine Wirkstoffpartikel natürlichen Ursprungs. Ein Prickeln beim Auftragen ist eine normale Reaktion und klingt in der Regel schnell ab. Passen Sie Menge und Häufigkeit an Ihre Haut an.</dd>
+
+          <dt>Gibt es Wirkstoffe, die ich nicht gleichzeitig verwenden sollte?</dt>
+          <dd>Grundsätzlich nein. Bei Produkten mit Säuren (AHA, BHA, PHA), Retinol oder hoch dosiertem Vitamin C kann es je nach Hauttyp zu Reizungen kommen. Führen Sie in diesem Fall vorab einen Patch-Test durch.</dd>
+
+          <dt>Ist die Ampulle für empfindliche Haut geeignet?</dt>
+          <dd>Die Formel ist dermatologisch getestet und für empfindliche Haut geeignet. Bei sehr reaktiver Haut beginnen Sie am besten mit der abendlichen Anwendung und steigern die Häufigkeit über zwei Wochen.</dd>
+
+          <dt>Wie ist das Produkt geprüft?</dt>
+          <dd>Dermatologisch getestet. Entwickelt und hergestellt nach der EU-Kosmetikverordnung (EG) Nr. 1223/2009.</dd>
+        </dl>
+      </div></div></div>
+    </details>
+
+  </section>
+
+  <section><img width="1600" height="1088" loading="lazy" src="assets/Gm_06.jpg" alt="Hinweis: Diese Seite ist eine unaufgeforderte Redesign-Studie für Portfoliozwecke."></section>
+
+</main>
+
+<aside class="trbar" id="trbar" aria-live="polite">
+  <div class="trbar-in">
+    <div class="trbar-hd"><span class="kr-tag">KR</span><span class="trbar-sec" id="trsec"></span></div>
+    <div class="trbar-body" id="trbody"></div>
+  </div>
+</aside>
+
+<script>
+/* ── 번역 바 ────────────────────────────────────────────
+   기본은 꺼짐(실제 커머스 페이지 상태 보존).
+   켜면 화면 하단에 고정되고, 스크롤에 따라
+   '지금 보고 있는 섹션'의 번역으로 교체된다.
+   긴 이미지(섹션 2는 6140px)의 경우 번역이 페이지 맨 아래
+   붙어 있으면 원문과 멀어져 대조가 불가능하기 때문. */
+const TR = {
+  s1: ['섹션 1 · 히어로', `
+    <p><b>재생. 탄력. 광채.</b></p>
+    <p>한국의 피부 과학을, 집에서 누리는 글로우 리추얼로.</p>
+    <p class="sub">PDRN · 엑소좀 · 핑크 콜라겐</p>`],
+
+  s2: ['섹션 2 · 사이언스 · 성분', `
+    <p><b>스킨부스터 유효 성분, 한 병의 앰플에 농축.</b></p>
+    <p><b>한국의 피부과학.</b><br>실제 전문 케어에서 활용되는 성분, 그대로.</p>
+    <p><b>순도 99% 연어 PDRN</b><br>전문 피부 케어에서 쓰이는 재생 성분.</p>
+    <p><b>1,500만 개 고순도 엑소좀</b><br>유효 성분을 포뮬러 안에 고르게 전달하는 전달체.</p>
+    <p><b>200달톤 핑크 콜라겐</b><br>탄력과 윤기를 위한 저분자 콜라겐. 인공 색소 무첨가 — 분홍빛은 원료 자체의 색입니다.</p>`],
+
+  s3: ['섹션 3 · 임상 수치', `
+    <p class="sub">이해를 돕기 위해 연출된 영상입니다.</p>
+    <p><b>재생 · +146%</b> — 콜라겐 생성 효과 <span class="sub">(30분 사용 후 · in vitro 시험 보고서)</span></p>
+    <p><b>탄력 · +16.9%</b> — 피부 볼륨(수분 볼륨감) 개선 <span class="sub">(2주 사용 후 · 인체적용시험 보고서)</span></p>
+    <p><b>광채 · +24%</b> — 피부 속광 개선 <span class="sub">(사용 직후 · 인체적용시험 보고서)</span></p>`],
+
+  s4: ['섹션 4 · 부위별 주름 개선', `
+    <p><b>2주 사용 후</b> — 주름 부위 / 개선율</p>
+    <p>이마 부위 주름 6.98% · 눈밑 부위 주름 8.15%<br>팔자 부위 주름 7.45% · 입가 부위 주름 8.55%</p>
+    <p class="sub">인체적용시험 · 2주 · 메디큐브 인체적용시험 보고서 발췌<br>개인차가 있을 수 있습니다.</p>`],
+
+  s5: ['섹션 5 · 제형 · 흡수', `
+    <p><b>Step 01. 바르는 순간 흡수</b><br>모공보다 25배 작은 10 µm 크기로 제형이 고르게 퍼지며, 잔여감 없이 흡수됩니다.</p>
+    <p><b>Step 02. 더 고르고 매끈한 피부결로</b><br>순도 99% 연어 PDRN이 피부를 눈에 띄게 서포트합니다. 안색이 한층 맑고, 고르고, 생기 있어 보입니다.</p>
+    <div class="orig">
+      한국 공식 페이지 원문 — <em>"모공에 흡수 / 속잡티까지 도달"</em>, <em>"잡티흔적을 깨끗하게"</em><br>
+      EU 화장품 규정(EC 1223/2009)상 각질층을 넘는 침투 표현과 색소침착 개선 주장은 사용할 수 없어,
+      흡수·외관 개선 표현으로 대체했습니다.
+    </div>`],
+
+  s6: ['아코디언 · 제품 상세', `
+    <p><b>사용법</b> — 저녁, 스킨케어 첫 단계에서 사용해주시면 더욱 효과가 좋습니다.</p>
+    <p><b>01 도포</b> 저녁 세안 후, 물기가 없는 건조한 얼굴에 적당량을 덜어 눈가와 입가를 피해 도포해줍니다.<br>
+       <b>02 흡수</b> 손으로 꾹꾹 눌러 앰플을 러빙하며 흡수시켜줍니다.<br>
+       <b>03 마무리</b> 평소 사용하는 보습제로 마무리해주세요.</p>
+    <p class="sub">· 따끔거리는 유효자극이 오래도록 느껴질 수 있으나, 성분이 반응하며 느껴지는 자연스러운 현상입니다.<br>
+       · 눈가와 입가는 피하여 사용해주세요.<br>
+       · 레티놀이 함유되어 있습니다. 낮에는 자외선 차단제를 함께 사용해주세요.<br>
+       · 민감하고 예민한 피부는 패치 테스트 진행 후 사용을 권장합니다.</p>
+
+    <p><b>사용 주기</b> — 엑소좀 샷 라인은 두 가지 농도로 구성됩니다.<br>
+       <b>2000</b> 매일 사용하는 데일리 &nbsp;·&nbsp; <b>7500</b> 집중 케어용</p>
+    <p>비기너 매일 2000 &nbsp;·&nbsp; 프로 수·토 7500 &nbsp;·&nbsp; 마스터 월·목·일 7500</p>
+
+    <p><b>성분 &amp; 클린</b> — 무첨가: 파라벤, 설페이트, 미네랄 오일, 인공 색소. 전성분(INCI) 전체를 공개합니다.</p>
+
+    <p class="q">바르고 난 후, 얼굴이 따끔거리는데 정상인가요?</p>
+    <p>자연 유래 미세 입자 성분을 함유하고 있어 사용 시 따끔함이 느껴질 수 있으나, 이는 고효능 성분이 피부에 전달되며 느껴지는 자연스러운 현상입니다. 피부에 따라 양과 사용 주기 조절을 권장합니다.</p>
+    <p class="q">함께 사용하면 안 되는 성분이 있나요?</p>
+    <p>함께 사용하면 안 되는 성분은 없으나, 민감도 관련 주의가 요구되는 성분의 경우 사용자에 따라 자극감을 느끼거나 과민하게 반응할 수 있습니다. 패치 테스트 후 양과 주기를 조절하여 사용해주세요.</p>
+    <p class="q">민감한 피부에도 사용할 수 있나요?</p>
+    <p>피부과 테스트를 완료했으며 민감한 피부에도 사용할 수 있습니다. 반응이 예민한 피부라면 저녁 사용부터 시작해 2주에 걸쳐 빈도를 늘리는 것을 권장합니다.</p>
+    <p class="q">제품은 어떤 검증을 거쳤나요?</p>
+    <p>피부과 테스트 완료. EU 화장품 규정 (EC) No 1223/2009에 따라 개발·생산되었습니다.</p>`]
+};
+
+(function(){
+  const btn=document.getElementById('trbtn');
+  const secEl=document.getElementById('trsec');
+  const bodyEl=document.getElementById('trbody');
+  const barIn=document.querySelector('.trbar-in');
+  let cur=null;
+
+  function show(id){
+    if(!TR[id] || cur===id) return;
+    cur=id;
+    secEl.textContent=TR[id][0];
+    bodyEl.innerHTML=TR[id][1];
+    barIn.scrollTop=0;      // 섹션이 바뀌면 번역도 처음부터
+  }
+
+  /* 화면 중앙선에 걸친 섹션을 '지금 보는 섹션'으로 판정.
+     IntersectionObserver의 ratio 방식은 긴 섹션에서
+     비율이 낮게 나와 오판하므로 중앙선 기준으로 계산한다. */
+  const secs=Object.keys(TR).map(id=>document.getElementById(id)).filter(Boolean);
+  function pick(){
+    if(!document.body.classList.contains('tr-on')) return;
+    const mid=window.innerHeight*0.42;
+    let best=null, bestD=Infinity;
+    secs.forEach(el=>{
+      const r=el.getBoundingClientRect();
+      if(r.bottom<0||r.top>window.innerHeight) return;
+      const d = (r.top<=mid && r.bottom>=mid) ? 0
+              : Math.min(Math.abs(r.top-mid), Math.abs(r.bottom-mid));
+      if(d<bestD){ bestD=d; best=el.id; }
+    });
+    if(best) show(best);
+  }
+
+  let tick=false;
+  addEventListener('scroll',()=>{
+    if(tick) return; tick=true;
+    requestAnimationFrame(()=>{ pick(); tick=false; });
+  },{passive:true});
+  addEventListener('resize',pick,{passive:true});
+
+  btn.addEventListener('click',()=>{
+    const on=document.body.classList.toggle('tr-on');
+    btn.textContent = on ? '번역 끄기' : '번역 보기';
+    btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+    if(on){ cur=null; pick(); }
+  });
+})();
+
+const FRAME_SRC = ["assets/frames/000.webp", "assets/frames/001.webp", "assets/frames/002.webp", "assets/frames/003.webp", "assets/frames/004.webp", "assets/frames/005.webp", "assets/frames/006.webp", "assets/frames/007.webp", "assets/frames/008.webp", "assets/frames/009.webp", "assets/frames/010.webp", "assets/frames/011.webp", "assets/frames/012.webp", "assets/frames/013.webp", "assets/frames/014.webp", "assets/frames/015.webp", "assets/frames/016.webp", "assets/frames/017.webp", "assets/frames/018.webp", "assets/frames/019.webp", "assets/frames/020.webp", "assets/frames/021.webp", "assets/frames/022.webp", "assets/frames/023.webp", "assets/frames/024.webp", "assets/frames/025.webp", "assets/frames/026.webp", "assets/frames/027.webp", "assets/frames/028.webp", "assets/frames/029.webp", "assets/frames/030.webp", "assets/frames/031.webp", "assets/frames/032.webp", "assets/frames/033.webp", "assets/frames/034.webp", "assets/frames/035.webp", "assets/frames/036.webp", "assets/frames/037.webp", "assets/frames/038.webp", "assets/frames/039.webp", "assets/frames/040.webp", "assets/frames/041.webp", "assets/frames/042.webp", "assets/frames/043.webp", "assets/frames/044.webp", "assets/frames/045.webp", "assets/frames/046.webp", "assets/frames/047.webp", "assets/frames/048.webp", "assets/frames/049.webp", "assets/frames/050.webp", "assets/frames/051.webp", "assets/frames/052.webp", "assets/frames/053.webp", "assets/frames/054.webp", "assets/frames/055.webp", "assets/frames/056.webp", "assets/frames/057.webp", "assets/frames/058.webp", "assets/frames/059.webp", "assets/frames/060.webp", "assets/frames/061.webp", "assets/frames/062.webp", "assets/frames/063.webp", "assets/frames/064.webp", "assets/frames/065.webp", "assets/frames/066.webp", "assets/frames/067.webp", "assets/frames/068.webp", "assets/frames/069.webp", "assets/frames/070.webp", "assets/frames/071.webp", "assets/frames/072.webp", "assets/frames/073.webp", "assets/frames/074.webp", "assets/frames/075.webp", "assets/frames/076.webp", "assets/frames/077.webp", "assets/frames/078.webp", "assets/frames/079.webp", "assets/frames/080.webp", "assets/frames/081.webp", "assets/frames/082.webp", "assets/frames/083.webp", "assets/frames/084.webp", "assets/frames/085.webp", "assets/frames/086.webp", "assets/frames/087.webp", "assets/frames/088.webp", "assets/frames/089.webp"];
+const cv=document.getElementById('c'), ctx=cv.getContext('2d');
+const box=document.getElementById('v'), hint=document.getElementById('hint');
+const N=FRAME_SRC.length, imgs=new Array(N);
+let cur=0, ready=false, dragging=false, idleTimer=null, touched=false, raf=null, last=0;
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const FPS=12;
+
+let done=0;
+FRAME_SRC.forEach((src,i)=>{
+  const im=new Image();
+  im.onload=im.onerror=()=>{ if(++done===N) start(); };
+  im.src=src;
+  imgs[i]=im;
+});
+
+function draw(){
+  const i=((Math.round(cur)%N)+N)%N;
+  const im=imgs[i];
+  if(im&&im.complete) ctx.drawImage(im,0,0,cv.width,cv.height);
+}
+function start(){ ready=true; draw(); if(!reduce) play(); }
+function play(){
+  cancelAnimationFrame(raf); last=performance.now();
+  const tick=t=>{
+    if(dragging) return;
+    const dt=t-last;
+    if(dt>=1000/FPS){ cur=(cur+dt/(1000/FPS))%N; last=t; draw(); }
+    raf=requestAnimationFrame(tick);
+  };
+  raf=requestAnimationFrame(tick);
+}
+
+let sx=0, sf=0;
+box.addEventListener('pointerdown',e=>{
+  if(!ready) return;
+  dragging=true; cancelAnimationFrame(raf); clearTimeout(idleTimer);
+  sx=e.clientX; sf=cur;
+  box.setPointerCapture(e.pointerId); box.classList.add('grabbing');
+  if(!touched){ touched=true; hint.classList.add('gone'); }
+});
+box.addEventListener('pointermove',e=>{
+  if(!dragging) return;
+  const w=box.getBoundingClientRect().width;
+  cur=sf+(e.clientX-sx)*(N/w);
+  draw();
+});
+function rel(e){
+  if(!dragging) return;
+  dragging=false; box.classList.remove('grabbing');
+  try{ box.releasePointerCapture(e.pointerId); }catch(_){}
+  if(!reduce) idleTimer=setTimeout(play,1200);
+}
+box.addEventListener('pointerup',rel);
+box.addEventListener('pointercancel',rel);
+
+box.addEventListener('keydown',e=>{
+  if(!ready) return;
+  if(e.key==='ArrowRight'||e.key==='ArrowLeft'){
+    e.preventDefault(); cancelAnimationFrame(raf); clearTimeout(idleTimer);
+    cur+=(e.key==='ArrowRight'?2:-2); draw();
+    if(!reduce) idleTimer=setTimeout(play,1200);
+  }
+});
+
+new IntersectionObserver(en=>{
+  en.forEach(x=>{
+    if(!ready) return;
+    if(x.isIntersecting){ if(!dragging&&!reduce) play(); } else cancelAnimationFrame(raf);
+  });
+},{threshold:.05}).observe(box);
+</script>
+</body>
+</html>
